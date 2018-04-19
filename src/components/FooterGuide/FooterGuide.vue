@@ -1,5 +1,5 @@
 <template>
-    <div class="footernav">
+    <div class="footernav" v-show="$route.meta.footerContent">
         <div class="foot_item" @click="goto('/homePage')" :class="{on: isCheck('/homePage')}">
           <span class="icon_item">
             <i class="iconfont icon-shouyedianpujishishangcheng"/>
@@ -43,6 +43,7 @@ export default {
   @import "../../common/stylus/mixins.styl"
   .footernav
     position fixed
+    margin-top -55px
     z-index 100
     left 0
     right 0

@@ -21,55 +21,29 @@
         </span>
       </div>
     </div>
-    <div class="headBottom" ref="wa">
-      <ul>
-        <li class="headBottom_item">
+    <div class="headBottom">
+      <ul >
+        <li class="headBottom_item" v-for="(ls,index) in linkshare.menus" :key="index">
           <span>
-            <p>首页</p>
+            <p>{{ls.menu_name}}</p>
             <i class="rels"></i>
           </span>
-        </li>
-        <li class="headBottom_item">
-        <span>
-          <p>狗狗主粮</p>
-        </span>
-        </li>
-        <li class="headBottom_item">
-        <span>
-          <p>零食</p>
-        </span>
-        </li>
-        <li class="headBottom_item">
-        <span>
-          <p>医疗保健</p>
-        </span>
-        </li>
-        <li class="headBottom_item">
-        <span>
-          <p>玩具</p>
-        </span>
-        </li>
-        <li class="headBottom_item">
-        <span>
-          <p>外出</p>
-        </span>
-        </li>
-        <li class="headBottom_item">
-        <span>
-          <p>服饰城</p>
-        </span>
-        </li>
+      </li>
       </ul>
     </div>
   </div>
 </template>
 <script>
 import BScroll from 'better-scroll'
+import {mapState} from 'vuex'
 export default {
   data () {
     return {
       scrollY: 0
     }
+  },
+  computed: {
+    ...mapState(['linkshare'])
   },
   mounted () {
     this.$nextTick(() => {
@@ -82,9 +56,10 @@ export default {
 }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-  @import "../../common/stylus/mixins.styl"
+  @import "../../../common/stylus/mixins.styl"
   .headerContent
     position fixed
+    background #ffffff
     z-index 100
     left 0
     right 0
@@ -93,7 +68,6 @@ export default {
     height 86px
     .headTop
       height 51px
-      background #ffffff
       .headTop_item
         float left
         margin 13px 5px
@@ -102,7 +76,7 @@ export default {
           margin auto
           input
             height 25px
-            border-radius 5px
+            /*border-radius 5px*/
             background #eee
           .iconfont
             z-index 10
@@ -118,7 +92,6 @@ export default {
             font-size 24px
     .headBottom
       height 36px
-      background pink
       display flex
       white-space nowrap
       .headBottom_item
@@ -131,16 +104,5 @@ export default {
           color #459d36
           margin 10px 0
           font-size 16px
-        .rels
-           display block
-           border 1px solid #459d36
-           width 50%
-           margin-left  18px
-           margin-top 7px
-         /* position absolute*/
-         /* bottom 1px*/
 
-         /* width 10px
-          height 10px
-          background red*/
 </style>
